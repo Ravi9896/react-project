@@ -32,6 +32,12 @@ function App() {
     }
   };
 
+  //reset the counter vlaue
+  const reset = () => {
+    setCount(0);
+    setDisabled(false);
+    setDisabledSub(false);
+  };
   return (
     <>
       <h1>Counter Value = {value}</h1>
@@ -40,7 +46,8 @@ function App() {
       </button>{" "}
       <button onClick={Sub} disabled={disabledSub}>
         Sub
-      </button>
+      </button>{" "}
+      <button onClick={reset}>reset</button>
     </>
   );
 }
