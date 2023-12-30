@@ -35,18 +35,10 @@ function App() {
   return (
     <>
       <h1>Counter Value = {value}</h1>
-      <button
-        onClick={Add}
-        disabled={disabled}
-     
-      >
+      <button onClick={Add} disabled={disabled}>
         Add
       </button>{" "}
-      <button
-        onClick={Sub}
-        disabled={disabledSub}
-       
-      >
+      <button onClick={Sub} disabled={disabledSub}>
         Sub
       </button>
     </>
