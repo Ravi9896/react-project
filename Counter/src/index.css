@@ -1,6 +1,8 @@
-@tailwind base;
+/* you can uncommnement the code and add your own css */
+
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
