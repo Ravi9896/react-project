@@ -39,13 +39,13 @@ function App() {
         />
         <div>
           <button
-            className="border-2  border-black rounded-md bg-black text-white px-2"
+            className={`border-2 border-${color} rounded-md bg-black text-white px-2`}
             onClick={darkTheme}
           >
             night
           </button>{" "}
           <button
-            className="border-2  border-white rounded-md bg-white text-black px-3.5"
+            className={`border-2  border-${color} rounded-md bg-white text-black px-3.5`}
             onClick={lightTheme}
           >
             day
