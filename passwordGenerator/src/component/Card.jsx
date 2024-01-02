@@ -6,9 +6,13 @@ function Card() {
   const [number, setNumber] = useState(false);
   const [character, setCharacter] = useState(false);
 
-  const [theme, setTheme] = useState("white");
-  const [status, setStatus] = useState(true);
-  const [txt, setTxt] = useState("blue-600");
+  const [theme, setTheme] = useState("bg-gray-700");
+  const [status, setStatus] = useState(false);
+  const [txt, setTxt] = useState("white");
+  const [img, setImg] = useState(
+    "https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-64.png"
+  );
+ 
   const change = () => {
     setStatus((prev) => !prev);
 
@@ -16,10 +20,19 @@ function Card() {
       setTheme("bg-gray-700");
       console.log(theme);
       setTxt("white");
+       setImg(
+         "https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-64.png"
+       );
+     ;
     } else {
       setTheme("bg-white");
         console.log(theme);
       setTxt("blue-600");
+    
+
+     setImg(
+       "https://cdn3.iconfinder.com/data/icons/camera-scene-mode-glyph-16px/16/night_mode_moon_scene_dark-64.png"
+     );
     }
   };
 
@@ -56,7 +69,7 @@ function Card() {
   return (
     <div>
       <div
-        className={`h-screen w-screen flex flex-col items-center justify-center ${theme} `}
+        className={`h-screen w-screen flex flex-col items-center justify-center ${theme} duration-500 `}
       >
         <h1 className={`text-3xl font-mono text-${txt} font-bold`}>
           Password Genertor
@@ -78,6 +91,7 @@ function Card() {
             >
               copy
             </button>{" "}
+            &nbsp;
             <label className="relative inline-flex items-center cursor-pointer">
               <input
                 type="checkbox"
@@ -92,7 +106,10 @@ function Card() {
                 .
               </div>
             </label>{" "}
-            <span>mode</span>
+            &nbsp;
+            <span>
+              <img src={img} alt="" className="w-5 inline" />
+            </span>
           </div>
           <div>
             <input
