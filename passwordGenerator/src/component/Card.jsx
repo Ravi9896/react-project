@@ -10,7 +10,7 @@ function Card() {
   const [status, setStatus] = useState(false);
   const [txt, setTxt] = useState("white");
   const [img, setImg] = useState(
-    "https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-64.png"
+    "https://cdn3.iconfinder.com/data/icons/camera-scene-mode-glyph-16px/16/night_mode_moon_scene_dark-64.png"
   );
  
   const change = () => {
@@ -20,9 +20,12 @@ function Card() {
       setTheme("bg-gray-700");
       console.log(theme);
       setTxt("white");
-       setImg(
-         "https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-64.png"
-       );
+    
+
+       
+     setImg(
+       "https://cdn3.iconfinder.com/data/icons/camera-scene-mode-glyph-16px/16/night_mode_moon_scene_dark-64.png"
+     );
      ;
     } else {
       setTheme("bg-white");
@@ -30,9 +33,9 @@ function Card() {
       setTxt("blue-600");
     
 
-     setImg(
-       "https://cdn3.iconfinder.com/data/icons/camera-scene-mode-glyph-16px/16/night_mode_moon_scene_dark-64.png"
-     );
+       setImg(
+         "https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-64.png"
+       );
     }
   };
 
@@ -85,29 +88,15 @@ function Card() {
               className="border-2 border-blue-600 text-blue-600 rounded-md"
               ref={passwordRef}
             />{" "}
+            &nbsp;
             <button
               className="bg-blue-600 text-white px-2 border-1 border-blue-600 rounded-md"
               onClick={copy}
             >
               copy
             </button>{" "}
-            &nbsp;
-            <label className="relative inline-flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                value=""
-                className="sr-only peer"
-                defaultChecked={status}
-                onClick={change}
-              />
-              <div
-                className={`w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 text-blue-600`}
-              >
-                .
-              </div>
-            </label>{" "}
-            &nbsp;
-            <span>
+            &nbsp; &nbsp;
+            <span onClick={change} className="cursor-pointer">
               <img src={img} alt="" className="w-5 inline" />
             </span>
           </div>
