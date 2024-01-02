@@ -1,67 +1,69 @@
-
 import { useState, useCallback, useRef, useEffect } from "react";
 
 function Card() {
-     const [password, setPassword] = useState("");
-     const [length, setLength] = useState(8);
-     const [number, setNumber] = useState(false);
-     const [character, setCharacter] = useState(false);
+  const [password, setPassword] = useState("");
+  const [length, setLength] = useState(8);
+  const [number, setNumber] = useState(false);
+  const [character, setCharacter] = useState(false);
 
-       const [theme, setTheme] = useState("white");
-       const [status, setStatus] = useState(true);
-       const [txt,setTxt]=useState("blue-600")
-        const change = () => {
-          setStatus((prev) => !prev);
+  const [theme, setTheme] = useState("white");
+  const [status, setStatus] = useState(true);
+  const [txt, setTxt] = useState("blue-600");
+  const change = () => {
+    setStatus((prev) => !prev);
 
-          if (status) {
-            setTheme("gray-700");
-            setTxt("white");
-          } else {
-            setTheme("white");
-            setTxt("blue-600");
-          }
-        };
+    if (status) {
+      setTheme("bg-gray-700");
+      console.log(theme);
+      setTxt("white");
+    } else {
+      setTheme("bg-white");
+        console.log(theme);
+      setTxt("blue-600");
+    }
+  };
 
+  const passwordRef = useRef(null);
+  const copy = useCallback(() => {
+    passwordRef.current?.select();
 
-     const passwordRef = useRef(null);
-     const copy = useCallback(() => {
-       passwordRef.current?.select();
+    //selecting the particular of a element
+    // passwordRef.current?.setSelectionRange(0, 20);
 
-       //selecting the particular of a element
-       // passwordRef.current?.setSelectionRange(0, 20);
+    window.navigator.clipboard.writeText(password);
+  }, [password]);
 
-       window.navigator.clipboard.writeText(password);
-     }, [password]);
+  const passwordGenerator = useCallback(() => {
+    let pass = "";
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy";
+    if (number) str += "0123456789";
+    if (character) str += "!#$%^&*()_><?[]{}+,;=";
 
-     const passwordGenerator = useCallback(() => {
-       let pass = "";
-       let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy";
-       if (number) str += "0123456789";
-       if (character) str += "!#$%^&*()_><?[]{}+,;=";
+    for (let i = 1; i < length; i++) {
+      let char = Math.floor(Math.random() * str.length + 1);
 
-       for (let i = 1; i < length; i++) {
-         let char = Math.floor(Math.random() * str.length + 1);
+      pass += str.charAt(char);
+    }
 
-         pass += str.charAt(char);
-       }
+    setPassword(pass);
+    console.log(password);
+  }, [length, number, character, setPassword]);
 
-       setPassword(pass);
-       console.log(password);
-     }, [length, number, character, setPassword]);
-
-     useEffect(() => {
-       passwordGenerator();
-     }, [length, number, character, passwordGenerator]);
+  useEffect(() => {
+    passwordGenerator();
+  }, [length, number, character, passwordGenerator]);
 
   return (
     <div>
       <div
-        className={`h-screen w-screen flex flex-col items-center justify-center bg-${theme} `}
+        className={`h-screen w-screen flex flex-col items-center justify-center ${theme} `}
       >
         <h1 className={`text-3xl font-mono text-${txt} font-bold`}>
           Password Genertor
         </h1>
-        <div className={`bg-white border-2 border-white rounded-md p-5 shadow-xl `}>
+        <div
+          className={`bg-white border-2 border-white rounded-md p-5 shadow-xl `}
+        >
           <div>
             <input
               type="text"
@@ -81,7 +83,7 @@ function Card() {
                 type="checkbox"
                 value=""
                 className="sr-only peer"
-                checked={status}
+                defaultChecked={status}
                 onClick={change}
               />
               <div
@@ -107,7 +109,7 @@ function Card() {
             <input
               type="checkbox"
               id="check"
-              checked={character}
+              defaultChecked={character}
               onChange={() => {
                 setCharacter((prev) => !prev);
                 console.log(character);
@@ -116,7 +118,7 @@ function Card() {
             <label htmlFor="check">Character</label>{" "}
             <input
               type="checkbox"
-              checked={number}
+              defaultChecked={number}
               id="num"
               onChange={() => {
                 setNumber((prev) => !prev);
@@ -131,4 +133,4 @@ function Card() {
   );
 }
 
-export default Card
+export default Card;
